@@ -10,7 +10,7 @@ Este proyecto simula la interfaz web de un sistema de reservas para un hotel de 
 
 ```bash
 rollingpalace-frontend/
-├── public/                  # Imágenes y archivos estáticos.
+├── public/                  
 ├── src/
 │   ├── assets/              # Recursos estáticos como imágenes y fuentes.
 │   ├── components/          # Componentes reutilizables (Navbar, CardHabitación, etc.).
@@ -95,4 +95,4 @@ Mención a Andres Perlo, Emilse Arias y Julio Forni por los conocimientos transm
 
 ## 📄 Licencia
 
-Este proyecto se encuentra bajo la licencia [MIT](LICENSE).
+Este proyecto se encuentra bajo la licencia MIT.
