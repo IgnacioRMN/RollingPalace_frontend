@@ -11,16 +11,16 @@ import './styles/App.css';
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
+      <div className="d-flex flex-column min-vh-100">
         <BarraNavegacion />
-        <main className="flex-grow">
+        <main className="container my-4 flex-grow-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/iniciar-sesion" element={<IniciarSesion />} />
             <Route path="/registrarse" element={<Registrarse />} />
             <Route path="/catalogo" element={<Catalogo />} />
             <Route path="/admin" element={<PanelAdmin />} />
-            <Route path="*" element={<div className="text-center py-10">404 - Página no encontrada</div>} />
+            <Route path="*" element={<div className="text-center py-5">404 - Página no encontrada</div>} />
           </Routes>
         </main>
         <PiePagina />

@@ -1,43 +1,28 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink } from "react-router-dom";
 
 const BarraNavegacion = () => {
   return (
-    <nav className="bg-blue-900 text-white p-4 shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold">Rolling Palace</Link>
-        <div className="space-x-4">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? 'text-yellow-400' : 'hover:text-yellow-400'
-            }
-          >
-            Inicio
-          </NavLink>
-          <NavLink
-            to="/catalogo"
-            className={({ isActive }) =>
-              isActive ? 'text-yellow-400' : 'hover:text-yellow-400'
-            }
-          >
-            Catálogo
-          </NavLink>
-          <NavLink
-            to="/iniciar-sesion"
-            className={({ isActive }) =>
-              isActive ? 'text-yellow-400' : 'hover:text-yellow-400'
-            }
-          >
-            Iniciar Sesión
-          </NavLink>
-          <NavLink
-            to="/registrarse"
-            className={({ isActive }) =>
-              isActive ? 'text-yellow-400' : 'hover:text-yellow-400'
-            }
-          >
-            Registrarse
-          </NavLink>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+      <div className="container">
+        <Link className="navbar-brand fw-bold" to="/">Rolling Palace</Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <NavLink to="/" className="nav-link">Inicio</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/catalogo" className="nav-link">Catálogo</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/iniciar-sesion" className="nav-link">Iniciar Sesión</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/registrarse" className="nav-link">Registrarse</NavLink>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
