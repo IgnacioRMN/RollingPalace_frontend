@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <BarraNavegacion />
-        <main className="container my-4 flex-grow-1">
+        <main className="flex-grow-1 py-4">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/iniciar-sesion" element={<IniciarSesion />} />
