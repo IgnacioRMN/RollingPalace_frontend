@@ -1,4 +1,4 @@
-.login-section {
+.IniciarSesion-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   padding: 20px;
 }
 
-.login-card {
+.IniciarSesion-card {
   width: 100%;
   max-width: 400px;
   border: none;
@@ -16,7 +16,7 @@
   background-color: #ffffff;
 }
 
-.login-title {
+.IniciarSesion-title {
   font-size: 2rem;
   font-weight: 600;
   color: #08152e;
@@ -45,7 +45,7 @@
   box-shadow: 0 0 0 3px rgba(18, 216, 160, 0.2);
 }
 
-.login-button {
+.IniciarSesion-button {
   width: 100%;
   padding: 12px;
   font-size: 1rem;
@@ -58,12 +58,12 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.login-button:hover {
+.IniciarSesion-button:hover {
   background-color: #0fa;
   transform: translateY(-2px);
 }
 
-.login-button:active {
+.IniciarSesion-button:active {
   transform: translateY(0);
 }
 
@@ -74,11 +74,11 @@
 }
 
 @media (max-width: 576px) {
-  .login-card {
+  .IniciarSesion-card {
     padding: 20px;
   }
 
-  .login-title {
+  .IniciarSesion-title {
     font-size: 1.75rem;
   }
 
@@ -86,7 +86,7 @@
     font-size: 0.875rem;
   }
 
-  .login-button {
+  .IniciarSesion-button {
     font-size: 0.875rem;
   }
 }
