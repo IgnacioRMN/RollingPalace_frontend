@@ -1,6 +1,5 @@
 import { Button, Card, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { IniciarSesion } from "../App.jsx";
 import { useNavigate } from "react-router";
 import "./IniciarSesion.css";
 
