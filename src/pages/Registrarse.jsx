@@ -27,7 +27,7 @@ const Registrarse = ({ setUsuarioLogueado }) => {
     <section className="Registrarse-section">
       <Card className="Registrarse-card">
         <Card.Body>
-          <Card.Title className="Registrarse-title">Iniciar Sesión</Card.Title>
+          <Card.Title className="Registrarse-title">Registrarse</Card.Title>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-4" controlId="formGroupEmail">
               <Form.Label className="form-label">Email</Form.Label>
