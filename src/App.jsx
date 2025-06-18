@@ -7,12 +7,13 @@ import Registrarse from './pages/Registrarse';
 import Catalogo from './pages/Catalogo';
 import PanelAdmin from './pages/PanelAdmin';
 import './styles/App.css';
+import Error404 from './pages/Error404';
 
 function App() {
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
-        <BarraNavegacion />
+        <BarraNavegacion/>
         <main className="flex-grow-1 py-4">
           <Routes>
             <Route path="/" element={<Home />} />

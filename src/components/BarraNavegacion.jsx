@@ -1,4 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
+import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import "./BarraNavegacion.css"
 
 const BarraNavegacion = () => {
   return (
