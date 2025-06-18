@@ -1,3 +1,4 @@
+
 const Registrarse = () => {
   return (
     <div className="container py-5 text-center">
