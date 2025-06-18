@@ -7,6 +7,7 @@ import Registrarse from "./pages/Registrarse";
 import Catalogo from "./pages/Catalogo";
 import PanelAdmin from "./pages/PanelAdmin";
 import SobreNosotros from "./pages/SobreNosotros";
+import Contacto from "./pages/Contacto";
 import "./styles/App.css";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/registrarse" element={<Registrarse />} />
             <Route path="/catalogo" element={<Catalogo />} />
             <Route path="/SobreNosotros" element={<SobreNosotros />} />
+            <Route path="/Contacto" element={<Contacto />} />
             <Route path="/admin" element={<PanelAdmin />} />
             <Route
               path="*"
