@@ -1,9 +1,12 @@
-const Home = () => {
+import React from 'react'
+import { CarruselComponent } from '../components/CarruselComponent'
+
+export const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <CarruselComponent />
     </div>
-  );
-};
+  )
+}
 
 export default Home;
