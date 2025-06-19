@@ -27,7 +27,7 @@ const AcercaNosotros = () => {
         interactivo de habitaciones disponibles para reservar.
         <br />
         <br />
-        <b>Rolling Palace</b> es más que un proyecto académico, es una
+        <b>Rolling Palace</b> es más que un proyecto académico; es una
         demostración de nuestro compromiso con el desarrollo de soluciones
         tecnológicas innovadoras y funcionales que satisfacen las necesidades
         del mercado actual.
