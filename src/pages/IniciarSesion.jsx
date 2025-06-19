@@ -1,3 +1,4 @@
+
 import { useForm } from "react-hook-form";
 import { login } from "../helpers/api.js";
 import { useNavigate } from "react-router";
@@ -41,6 +42,9 @@ const Login = ({ setUsuarioLogueado }) => {
     }
   };
 
+
+
+const IniciarSesion = () => {
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-100">
       <div className="card shadow p-4 w-100" style={{ maxWidth: "400px" }}>
@@ -106,6 +110,7 @@ const Login = ({ setUsuarioLogueado }) => {
         </form>
       </div>
     </div>
+
   );
 };
 
