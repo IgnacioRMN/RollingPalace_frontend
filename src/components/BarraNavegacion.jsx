@@ -1,10 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
 
+
 const BarraNavegacion = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow">
       <div className="container">
-        <Link className="navbar-brand fw-bold" to="/">Rolling Palace</Link>
+        <Link className="navbar-brand" to="/">
+  <img
+    src="logo.png"
+    alt="Rolling Palace"
+    height="40"
+    className="d-inline-block align-text-top"
+  />
+</Link>
+
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -15,6 +24,9 @@ const BarraNavegacion = () => {
             </li>
             <li className="nav-item">
               <NavLink to="/catalogo" className="nav-link">Catálogo</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/galeria">Galería</NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/iniciar-sesion" className="nav-link">Iniciar Sesión</NavLink>

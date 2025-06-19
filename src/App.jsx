@@ -6,7 +6,9 @@ import IniciarSesion from './pages/IniciarSesion';
 import Registrarse from './pages/Registrarse';
 import Catalogo from './pages/Catalogo';
 import PanelAdmin from './pages/PanelAdmin';
+import Galeria from './pages/Galeria';
 import './styles/App.css';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
             <Route path="/registrarse" element={<Registrarse />} />
             <Route path="/catalogo" element={<Catalogo />} />
             <Route path="/admin" element={<PanelAdmin />} />
+            <Route path="/galeria" element={<Galeria />} />
             <Route path="*" element={<div className="text-center py-5">404 - Página no encontrada</div>} />
           </Routes>
         </main>

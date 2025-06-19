@@ -1,0 +1,13 @@
+.text-gold {
+  color: #0b5ed7;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 200px;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
