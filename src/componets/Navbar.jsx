@@ -31,7 +31,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <NavLink to="/iniciar-sesion" className="nav-link text-black">
-                Iniciar Sesión
+                Login
               </NavLink>
             </li>
             <li className="nav-item">
