@@ -1,12 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import "../styles/Navbar.css";
+import Logo from "../assets/logo.png";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark  shadow beige">
       <div className="container">
-        <Link className="navbar-brand fw-bold text-black" to="/">
-          Rolling Palace
+        <Link className="navbar-brand fw-bold text-black " to="/">
+          <img src={Logo} alt="Logo" className="logo" />
         </Link>
         <button
           className="navbar-toggler"
