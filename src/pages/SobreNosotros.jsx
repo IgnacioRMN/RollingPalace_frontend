@@ -50,13 +50,6 @@ const SobreNosotros = () => {
 
         <Col md={6} sm={12} lg={3} className="team-member">
           <div className="member-image border-primary">
-            <img src="./src/assets/juanStegmayer.jpeg" alt="Juan Stegmayer" />
-          </div>
-          <h5 className="text-primary">Juan Stegmayer</h5>
-        </Col>
-
-        <Col md={6} sm={12} lg={3} className="team-member">
-          <div className="member-image border-primary">
             <img
               src="./src/assets/juanMonserrat.jpeg"
               alt="Juan Andres Monserrat"
@@ -70,6 +63,12 @@ const SobreNosotros = () => {
             <img src="./src/assets/ericMercado.jpeg" alt="Eric Mercado" />
           </div>
           <h5 className="text-primary">Eric Mercado</h5>
+        </Col>
+        <Col md={6} sm={12} lg={3} className="team-member">
+          <div className="member-image border-primary">
+            <img src="./src/assets/juanStegmayer.jpeg" alt="Juan Stegmayer" />
+          </div>
+          <h5 className="text-primary">Juan Stegmayer</h5>
         </Col>
       </Row>
     </section>
