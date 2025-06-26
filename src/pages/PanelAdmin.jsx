@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
-import { obtenerHabitaciones, eliminarHabitacion } from "../helpers/api";
-import { obtenerTodasReservas, actualizarEstadoReserva } from "../helpers/api";
+import {
+  obtenerHabitaciones,
+  eliminarHabitacion,
+  actualizarHabitacion,
+  obtenerTodasReservas,
+  actualizarEstadoReserva,
+  eliminarReserva,
+} from "../helpers/api";
 import FormularioHabitacion from "../components/FormularioHabitacion";
 import Swal from "sweetalert2";
 import "../styles/PanelAdmin.css";
@@ -88,11 +94,25 @@ const PanelAdmin = () => {
     setShowModal(true);
   };
 
-  // Nueva función para actualizar estado de reserva
-  const handleActualizarEstado = async (id, nuevoEstado) => {
+  // Nueva función para actualizar estado de reserva y habitación
+  const handleActualizarEstado = async (id, nuevoEstado, habitacionId) => {
     const token = localStorage.getItem("token");
     try {
       await actualizarEstadoReserva(id, nuevoEstado, token);
+      // Si se confirma la reserva, marcar la habitación como ocupada
+      if (nuevoEstado === "Confirmada" && habitacionId) {
+        await actualizarHabitacion(habitacionId, { estado: "ocupada" }, token);
+        await cargarHabitaciones();
+      }
+      // Si se cancela la reserva, marcar la habitación como disponible
+      if (nuevoEstado === "Cancelada" && habitacionId) {
+        await actualizarHabitacion(
+          habitacionId,
+          { estado: "disponible" },
+          token
+        );
+        await cargarHabitaciones();
+      }
       Swal.fire({
         icon: "success",
         title: `Reserva ${nuevoEstado.toLowerCase()}`,
@@ -108,6 +128,41 @@ const PanelAdmin = () => {
         title: "Error",
         text: error.message || "No se pudo actualizar la reserva",
       });
+    }
+  };
+
+  // Nueva función para eliminar reserva cancelada
+  const handleEliminarReserva = async (id) => {
+    const token = localStorage.getItem("token");
+    const result = await Swal.fire({
+      title: "¿Eliminar reserva?",
+      text: "Esta acción no se puede deshacer.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    });
+    if (result.isConfirmed) {
+      try {
+        await eliminarReserva(id, token);
+        Swal.fire({
+          icon: "success",
+          title: "Reserva eliminada",
+          timer: 1200,
+          showConfirmButton: false,
+        });
+        // Recargar reservas
+        const data = await obtenerTodasReservas(token);
+        setReservas(data);
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: error.message || "No se pudo eliminar la reserva",
+        });
+      }
     }
   };
 
@@ -242,25 +297,44 @@ const PanelAdmin = () => {
                   <td>{reserva.fechaFin?.slice(0, 10)}</td>
                   <td>{reserva.estado || "Pendiente"}</td>
                   <td>
-                    {reserva.estado === "Pendiente" && (
+                    {(reserva.estado === "Pendiente" ||
+                      reserva.estado === "Confirmada") && (
                       <>
-                        <button
-                          className="btn btn-success btn-sm me-2"
-                          onClick={() =>
-                            handleActualizarEstado(reserva._id, "Confirmada")
-                          }
-                        >
-                          Confirmar
-                        </button>
+                        {reserva.estado === "Pendiente" && (
+                          <button
+                            className="btn btn-success btn-sm me-2"
+                            onClick={() =>
+                              handleActualizarEstado(
+                                reserva._id,
+                                "Confirmada",
+                                reserva.habitacion?._id || reserva.habitacion
+                              )
+                            }
+                          >
+                            Confirmar
+                          </button>
+                        )}
                         <button
                           className="btn btn-danger btn-sm"
                           onClick={() =>
-                            handleActualizarEstado(reserva._id, "Cancelada")
+                            handleActualizarEstado(
+                              reserva._id,
+                              "Cancelada",
+                              reserva.habitacion?._id || reserva.habitacion
+                            )
                           }
                         >
                           Cancelar
                         </button>
                       </>
+                    )}
+                    {reserva.estado === "Cancelada" && (
+                      <button
+                        className="btn btn-outline-danger btn-sm"
+                        onClick={() => handleEliminarReserva(reserva._id)}
+                      >
+                        Eliminar
+                      </button>
                     )}
                   </td>
                 </tr>

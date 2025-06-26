@@ -106,3 +106,8 @@ export const obtenerTodasReservas = (token) => {
 export const actualizarEstadoReserva = (id, estado, token) => {
   return fetchAPI(`/reservas/${id}`, "PUT", { estado }, token);
 };
+
+// Eliminar reserva (admin)
+export const eliminarReserva = (id, token) => {
+  return fetchAPI(`/reservas/${id}`, "DELETE", null, token);
+};
