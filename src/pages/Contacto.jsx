@@ -27,101 +27,69 @@ const Contacto = () => {
   };
 
   return (
-    <div className="container mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <form
-        onSubmit={handleSubmit}
-        className="col-span-2 bg-white shadow-xl rounded-2xl p-8 flex flex-col gap-6"
-      >
-        <h1 className="text-3xl font-bold">Contáctanos</h1>
-
-        <label className="flex flex-col gap-2">
-          <span className="font-medium">Tu e‑mail</span>
-          <input
-            type="email"
-            name="email"
-            required
-            value={form.email}
-            onChange={handleChange}
-            className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            placeholder="tucorreo@ejemplo.com"
-          />
-        </label>
-
-        <label className="flex flex-col gap-2">
-          <span className="font-medium">Tu mensaje</span>
-          <textarea
-            name="message"
-            required
-            rows={6}
-            value={form.message}
-            onChange={handleChange}
-            className="border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
-            placeholder="Escribe tu mensaje..."
-          />
-        </label>
-
-        <button
-          type="submit"
-          className="w-fit bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-xl transition-colors"
-        >
-          Enviar
-        </button>
-      </form>
-
-      <aside className="col-span-1 flex flex-col gap-6">
-        <div className="bg-white shadow-xl rounded-2xl p-8 flex flex-col gap-4">
-          <h2 className="text-2xl font-semibold">Datos de contacto</h2>
-          <p className="flex items-center gap-3">
-            <MapPin className="w-5 h-5" /> Gral. José María Paz 576, San Miguel
-            de Tucumán, Argentina
-          </p>
-          <p className="flex items-center gap-3">
-            <Phone className="w-5 h-5" /> +54 9 11 1234‑5678
-          </p>
-          <p className="flex items-center gap-3">
-            <Mail className="w-5 h-5" /> rollingpalace@gmail.com
-          </p>
+    <div className="container py-5">
+      <div className="row justify-content-center">
+        <div className="col-lg-8">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white shadow rounded-4 p-4 mb-4"
+          >
+            <h1 className="h3 mb-4 fw-bold">Contáctanos</h1>
+            <div className="mb-3">
+              <label className="form-label">Tu e‑mail</label>
+              <input
+                type="email"
+                name="email"
+                required
+                value={form.email}
+                onChange={handleChange}
+                className="form-control"
+                placeholder="tucorreo@ejemplo.com"
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Tu mensaje</label>
+              <textarea
+                name="message"
+                required
+                rows={6}
+                value={form.message}
+                onChange={handleChange}
+                className="form-control"
+                placeholder="Escribe tu mensaje..."
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Enviar
+            </button>
+          </form>
         </div>
-
-        <div className="flex gap-4 justify-center lg:justify-start">
-          <a
-            href="https://facebook.com/tuempresa"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            className="p-3 rounded-full bg-slate-100 hover:bg-slate-200 transition"
-          >
-            <Facebook className="w-5 h-5" />
-          </a>
-          <a
-            href="https://instagram.com/tuempresa"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="p-3 rounded-full bg-slate-100 hover:bg-slate-200 transition"
-          >
-            <Instagram className="w-5 h-5" />
-          </a>
-          <a
-            href="https://twitter.com/tuempresa"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
-            className="p-3 rounded-full bg-slate-100 hover:bg-slate-200 transition"
-          >
-            <Twitter className="w-5 h-5" />
-          </a>
-          <a
-            href="https://linkedin.com/company/tuempresa"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="p-3 rounded-full bg-slate-100 hover:bg-slate-200 transition"
-          >
-            <Linkedin className="w-5 h-5" />
-          </a>
+        <div className="col-lg-4 d-flex flex-column align-items-center justify-content-center">
+          <div className="mb-3">
+            <Mail className="me-2" /> contacto@rollingpalace.com
+          </div>
+          <div className="mb-3">
+            <Phone className="me-2" /> +54 381 123 4567
+          </div>
+          <div className="mb-3">
+            <MapPin className="me-2" /> Calle Hotel 123, Tucumán
+          </div>
+          <div className="d-flex gap-3">
+            <a href="#" className="text-primary">
+              <Facebook />
+            </a>
+            <a href="#" className="text-primary">
+              <Instagram />
+            </a>
+            <a href="#" className="text-primary">
+              <Twitter />
+            </a>
+            <a href="#" className="text-primary">
+              <Linkedin />
+            </a>
+          </div>
         </div>
-      </aside>
+      </div>
     </div>
   );
 };

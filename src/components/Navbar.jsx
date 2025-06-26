@@ -1,14 +1,43 @@
-import { Link, NavLink } from "react-router-dom";
-import "../styles/Navbar.css";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import Logo from "../assets/logo.png";
+import "../styles/Navbar-Footer.css";
+import "../styles/Botones.css";
 
-const Navbar = () => {
+const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
+  const navigate = useNavigate();
+
+  const handleCerrarSesion = async () => {
+    const result = await Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¿Deseas cerrar sesión?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, cerrar sesión",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (result.isConfirmed) {
+      localStorage.removeItem("token");
+      setUsuarioLogueado(null);
+      Swal.fire({
+        icon: "success",
+        title: "Sesión cerrada",
+        text: "Cerraste sesión correctamente",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      navigate("/");
+    }
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark  shadow beige">
+    <nav className="navbar navbar-expand-lg navbar-light bg-beige shadow">
       <div className="container">
-        <Link className="navbar-brand fw-bold text-black " to="/">
-          <img src={Logo} alt="Logo" className="logo" />
+        <Link className="navbar-brand fw-bold text-black" to="/">
+          <img src={Logo} alt="Logo" style={{ height: 50, width: "auto" }} />
         </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -17,8 +46,9 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto align-items-lg-center gap-2">
             <li className="nav-item">
               <NavLink to="/" className="nav-link text-black">
                 Inicio
@@ -29,16 +59,31 @@ const Navbar = () => {
                 Catálogo
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to="/iniciar-sesion" className="nav-link text-black">
-                Login
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/registrarse" className="nav-link text-black">
-                Registrarse
-              </NavLink>
-            </li>
+
+            {usuarioLogueado ? (
+              <li className="nav-item">
+                <button
+                  type="button"
+                  className="btn btn-dark-elegant"
+                  onClick={handleCerrarSesion}
+                >
+                  Cerrar Sesión
+                </button>
+              </li>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <NavLink to="/login" className="btn btn-outline-dark-elegant">
+                    Login
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink to="/registro" className="btn btn-dark-elegant">
+                    Registrarse
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

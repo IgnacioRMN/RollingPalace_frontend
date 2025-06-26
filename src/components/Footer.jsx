@@ -1,8 +1,8 @@
-import "../styles/Footer.css";
+import "../styles/Navbar-Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="text-black py-4 mt-auto beige">
+    <footer className="bg-beige text-black py-4 mt-auto">
       <div className="container text-center">
         <p className="h5 fw-semibold">Rolling Palace</p>
         <p>Calle Hotel 123, Tucumán, Argentina</p>
