@@ -1,6 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Botones.css";
+import "../styles/Home.css";
 import CarruselComponent from "../components/CarruselComponent.jsx";
+import { LiaHotelSolid } from "react-icons/lia";
+import { MdOutlineSpa } from "react-icons/md";
+import { IoCarOutline } from "react-icons/io5";
 
 const Home = () => {
   return (
@@ -23,12 +27,16 @@ const Home = () => {
 
       {/* Servicios */}
       <section className="container py-5">
-        <h2 className="text-center text-primary mb-5">Nuestros Servicios</h2>
+        <h2 className="text-center text-dark-elegant mb-5">
+          Nuestros Servicios
+        </h2>
         <div className="row g-4">
           <div className="col-md-4">
             <div className="card h-100 shadow-sm text-center">
               <div className="card-body">
+                <LiaHotelSolid className="mb-3" size={40} />
                 <h5 className="card-title">Alojamiento</h5>
+
                 <p className="card-text">
                   Habitaciones confortables para tu descanso perfecto.
                 </p>
@@ -38,6 +46,7 @@ const Home = () => {
           <div className="col-md-4">
             <div className="card h-100 shadow-sm text-center">
               <div className="card-body">
+                <MdOutlineSpa className="mb-3" size={40} />
                 <h5 className="card-title">Spa & Relax</h5>
                 <p className="card-text">
                   Espacios pensados para tu bienestar y tranquilidad.
@@ -48,6 +57,7 @@ const Home = () => {
           <div className="col-md-4">
             <div className="card h-100 shadow-sm text-center">
               <div className="card-body">
+                <IoCarOutline className="mb-3" size={40} />
                 <h5 className="card-title">Transporte</h5>
                 <p className="card-text">
                   Servicio de traslado cómodo y seguro para nuestros huéspedes.

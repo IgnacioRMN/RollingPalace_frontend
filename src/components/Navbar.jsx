@@ -60,6 +60,14 @@ const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
               </NavLink>
             </li>
 
+            {usuarioLogueado && (
+              <li className="nav-item">
+                <NavLink to="/panel-admin" className="nav-link text-black">
+                  Admin Panel
+                </NavLink>
+              </li>
+            )}
+
             {usuarioLogueado ? (
               <li className="nav-item">
                 <button

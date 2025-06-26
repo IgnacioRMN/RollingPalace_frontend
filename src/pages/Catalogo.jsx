@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { obtenerHabitaciones } from "../helpers/api";
+import "../styles/Botones.css";
 
 const Catalogo = () => {
   const [habitaciones, setHabitaciones] = useState([]);
@@ -56,7 +57,7 @@ const Catalogo = () => {
                     Disponible: {habitacion.disponible ? "Sí" : "No"}
                   </p>
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-dark-elegant"
                     disabled={!habitacion.disponible}
                   >
                     Reservar
