@@ -1,7 +1,7 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 // Función genérica para realizar peticiones
-const fetchAPI = async (
+export const fetchAPI = async (
   endpoint,
   metodo = "GET",
   cuerpo = null,
@@ -84,4 +84,25 @@ export const actualizarHabitacion = (id, datosHabitacion, token) => {
 
 export const eliminarHabitacion = (id, token) => {
   return fetchAPI(`/habitaciones/${id}`, "DELETE", null, token);
+};
+
+// ==================== RESERVAS ====================
+// Crear reserva (usuario)
+export const crearReserva = (datosReserva, token) => {
+  return fetchAPI("/reservas", "POST", datosReserva, token);
+};
+
+// Obtener reservas del usuario
+export const obtenerReservasUsuario = (token) => {
+  return fetchAPI("/reservas/mis-reservas", "GET", null, token);
+};
+
+// Obtener todas las reservas (admin)
+export const obtenerTodasReservas = (token) => {
+  return fetchAPI("/reservas", "GET", null, token);
+};
+
+// Actualizar estado de una reserva (admin)
+export const actualizarEstadoReserva = (id, estado, token) => {
+  return fetchAPI(`/reservas/${id}`, "PUT", { estado }, token);
 };

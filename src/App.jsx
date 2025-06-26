@@ -10,6 +10,7 @@ import ProteccionRutas from "./routes/ProteccionRutas";
 import SobreNosotros from "./pages/SobreNosotros";
 import Contacto from "./pages/Contacto";
 import Footer from "./components/Footer";
+import MisReservas from "./pages/MisReservas";
 import "./styles/App.css";
 
 function App() {
@@ -47,6 +48,14 @@ function App() {
               element={
                 <ProteccionRutas usuarioLogueado={usuarioLogueado}>
                   <PanelAdmin />
+                </ProteccionRutas>
+              }
+            />
+            <Route
+              path="/mis-reservas"
+              element={
+                <ProteccionRutas usuarioLogueado={usuarioLogueado}>
+                  <MisReservas />
                 </ProteccionRutas>
               }
             />

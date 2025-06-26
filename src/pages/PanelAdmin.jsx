@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { obtenerHabitaciones, eliminarHabitacion } from "../helpers/api";
+import { obtenerTodasReservas, actualizarEstadoReserva } from "../helpers/api";
 import FormularioHabitacion from "../components/FormularioHabitacion";
 import Swal from "sweetalert2";
 import "../styles/PanelAdmin.css";
@@ -11,6 +12,9 @@ const PanelAdmin = () => {
   const [showModal, setShowModal] = useState(false);
   const [editar, setEditar] = useState(false);
   const [habitacionId, setHabitacionId] = useState(null);
+  const [reservas, setReservas] = useState([]);
+  const [cargandoReservas, setCargandoReservas] = useState(true);
+  const [errorReservas, setErrorReservas] = useState("");
 
   const cargarHabitaciones = async () => {
     try {
@@ -83,6 +87,42 @@ const PanelAdmin = () => {
     setHabitacionId(id);
     setShowModal(true);
   };
+
+  // Nueva función para actualizar estado de reserva
+  const handleActualizarEstado = async (id, nuevoEstado) => {
+    const token = localStorage.getItem("token");
+    try {
+      await actualizarEstadoReserva(id, nuevoEstado, token);
+      Swal.fire({
+        icon: "success",
+        title: `Reserva ${nuevoEstado.toLowerCase()}`,
+        timer: 1200,
+        showConfirmButton: false,
+      });
+      // Recargar reservas
+      const data = await obtenerTodasReservas(token);
+      setReservas(data);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: error.message || "No se pudo actualizar la reserva",
+      });
+    }
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    obtenerTodasReservas(token)
+      .then((data) => {
+        setReservas(data);
+        setCargandoReservas(false);
+      })
+      .catch((err) => {
+        setErrorReservas(err.message || "Error al cargar reservas");
+        setCargandoReservas(false);
+      });
+  }, []);
 
   return (
     <div className="container my-5">
@@ -157,6 +197,77 @@ const PanelAdmin = () => {
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* Reservas del sistema */}
+      <div className="row align-items-center mb-4 mt-5">
+        <div className="col-md-8">
+          <h2 className="h4 fw-bold text-dark">Reservas del sistema</h2>
+          <p className="text-muted">Listado de todas las reservas realizadas</p>
+        </div>
+      </div>
+      <div className="table-responsive bg-white rounded shadow-sm mb-5">
+        {cargandoReservas ? (
+          <div className="text-center py-4">Cargando reservas...</div>
+        ) : errorReservas ? (
+          <div className="text-center text-danger py-4">{errorReservas}</div>
+        ) : reservas.length === 0 ? (
+          <div className="text-center text-muted py-4">
+            No hay reservas registradas.
+          </div>
+        ) : (
+          <table className="table table-hover table-bordered mb-0">
+            <thead className="table-info text-uppercase">
+              <tr>
+                <th>Usuario</th>
+                <th>Habitación</th>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reservas.map((reserva) => (
+                <tr key={reserva._id}>
+                  <td>
+                    {reserva.usuario?.nombre ||
+                      reserva.usuario?.email ||
+                      reserva.usuario}
+                  </td>
+                  <td>
+                    {reserva.habitacion?.numeroHabitacion || reserva.habitacion}
+                  </td>
+                  <td>{reserva.fechaInicio?.slice(0, 10)}</td>
+                  <td>{reserva.fechaFin?.slice(0, 10)}</td>
+                  <td>{reserva.estado || "Pendiente"}</td>
+                  <td>
+                    {reserva.estado === "Pendiente" && (
+                      <>
+                        <button
+                          className="btn btn-success btn-sm me-2"
+                          onClick={() =>
+                            handleActualizarEstado(reserva._id, "Confirmada")
+                          }
+                        >
+                          Confirmar
+                        </button>
+                        <button
+                          className="btn btn-danger btn-sm"
+                          onClick={() =>
+                            handleActualizarEstado(reserva._id, "Cancelada")
+                          }
+                        >
+                          Cancelar
+                        </button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

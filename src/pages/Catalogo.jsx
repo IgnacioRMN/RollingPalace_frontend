@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { obtenerHabitaciones } from "../helpers/api";
 import "../styles/Botones.css";
+import ReservaModal from "../components/ReservaModal";
+import { useNavigate } from "react-router-dom";
+import { crearReserva } from "../helpers/api";
 
 const Catalogo = () => {
   const [habitaciones, setHabitaciones] = useState([]);
+  const [modalAbierto, setModalAbierto] = useState(false);
+  const [habitacionSeleccionada, setHabitacionSeleccionada] = useState(null);
+  const navigate = useNavigate();
 
   // Ordenar por número de habitación, igual que en PanelAdmin
   const ordenarPorNombre = (lista) => {
@@ -25,6 +31,36 @@ const Catalogo = () => {
     };
     cargarHabitaciones();
   }, []);
+
+  const usuarioLogueado = !!localStorage.getItem("token");
+
+  const handleReservarClick = (habitacion) => {
+    if (!usuarioLogueado) {
+      navigate("/login");
+      return;
+    }
+    setHabitacionSeleccionada(habitacion);
+    setModalAbierto(true);
+  };
+
+  const handleCerrarModal = () => {
+    setModalAbierto(false);
+    setHabitacionSeleccionada(null);
+  };
+
+  const handleConfirmarReserva = async ({ fechaInicio, fechaFin }) => {
+    try {
+      await crearReserva({
+        habitacionId: habitacionSeleccionada._id,
+        fechaInicio,
+        fechaFin,
+      });
+      alert("Reserva realizada con éxito");
+      handleCerrarModal();
+    } catch (error) {
+      alert(error.message || "Error al reservar");
+    }
+  };
 
   return (
     <div className="container py-5">
@@ -59,6 +95,7 @@ const Catalogo = () => {
                   <button
                     className="btn btn-dark-elegant"
                     disabled={!habitacion.disponible}
+                    onClick={() => handleReservarClick(habitacion)}
                   >
                     Reservar
                   </button>
@@ -72,6 +109,12 @@ const Catalogo = () => {
           </div>
         )}
       </div>
+      <ReservaModal
+        isOpen={modalAbierto}
+        onClose={handleCerrarModal}
+        habitacion={habitacionSeleccionada}
+        onReservar={handleConfirmarReserva}
+      />
     </div>
   );
 };

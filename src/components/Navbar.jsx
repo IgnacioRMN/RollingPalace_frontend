@@ -60,10 +60,20 @@ const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
               </NavLink>
             </li>
 
-            {usuarioLogueado && (
+            {/* Mostrar Admin Panel solo si es admin */}
+            {usuarioLogueado && localStorage.getItem("isAdmin") === "true" && (
               <li className="nav-item">
                 <NavLink to="/panel-admin" className="nav-link text-black">
                   Admin Panel
+                </NavLink>
+              </li>
+            )}
+
+            {/* Mostrar "Mis Reservas" solo si está logueado y NO es admin */}
+            {usuarioLogueado && localStorage.getItem("isAdmin") !== "true" && (
+              <li className="nav-item">
+                <NavLink to="/mis-reservas" className="nav-link text-black">
+                  Mis Reservas
                 </NavLink>
               </li>
             )}
