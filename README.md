@@ -72,11 +72,11 @@ RollingPalace_frontend/
 
 ## ✨ Funcionalidades Destacadas
 
-- 🏠 Página principal con presentación del hotel
-- 🛏️ Catálogo de habitaciones con detalles y precios
-- 🔐 Sistema de login para clientes y administradores
-- 📋 Gestión de reservas y panel administrativo
-- 📱 Diseño responsive para dispositivos móviles
+- 🏠 Página principal con presentación del hotel.
+- 🛏️ Catálogo de habitaciones con detalles y precios.
+- 🔐 Sistema de login para clientes y administradores.
+- 📋 Gestión de reservas y panel administrativo.
+- 📱 Diseño responsive para dispositivos móviles.
 
 ---
 
@@ -88,9 +88,9 @@ RollingPalace_frontend/
 
 ## 👥 Equipo de Desarrollo
 
-- [José Ignacio Ramón](https://github.com/ignacio) – Tech Lead & Fullstack Developer
-- [Tomás Pando](https://github.com/tomas) – Scrum Master & Fullstack Developer
-- [Juan Andres Monserrat](https://github.com/monserrat) – Design UI & Frontend Developer
+- [José Ignacio Ramón](https://github.com/IgnacioRMN) – Tech Lead & Fullstack Developer
+- [Tomás Pando](https://github.com/TPtomaspando) – Scrum Master & Fullstack Developer
+- [Juan Andres Monserrat](https://github.com/petumonse) – Design UI & Frontend Developer
 - Eric Ezequiel Mercado – Developer
 - Juan Andres Stegmayer – Developer
 
