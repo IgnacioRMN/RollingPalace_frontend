@@ -10,13 +10,12 @@ Bienvenido al repositorio **frontend** de **Rolling Palace**, una plataforma web
 
 ```
 RollingPalace_frontend/
-├── public/                  # Archivos públicos y estáticos
 ├── src/
 │   ├── assets/              # Imágenes y recursos multimedia
 │   ├── components/          # Componentes reutilizables (Navbar, Footer, etc.)
-│   ├── helpers/             # Funciones utilitarias y helpers generales
+│   ├── helpers/             # conexión a la API
 │   ├── pages/               # Vistas principales (Home, Login, Admin, etc.)
-│   ├── routes/              # Lógica de rutas y protección
+│   ├── routes/              # protección de rutas
 │   ├── styles/              # Hojas de estilo CSS
 │   ├── App.jsx              # Definición de rutas principales
 │   └── main.jsx             # Punto de entrada de la app
