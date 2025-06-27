@@ -1,0 +1,64 @@
+.hero-bg {
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0 32px 0;
+}
+
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  right: -5%;
+  bottom: -5%;
+  background-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/11/7e/fe/palacete-colonial.jpg?w=1200&h=600&s=1");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  transition: filter 0.3s;
+}
+
+.hero-bg > .container {
+  position: relative;
+  z-index: 3;
+}
+
+.logo-hero {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 16px auto;
+  filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.25));
+}
+
+@media (max-width: 991px) {
+  .hero-bg {
+    padding: 32px 0 24px 0;
+    min-height: 380px;
+  }
+  .logo-hero {
+    max-width: 220px;
+  }
+}
+
+.btn.btn-dark-elegant {
+  background-color: #3e2630;
+  color: #ffffff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn.btn-dark-elegant:hover {
+  background-color: #5c3947;
+  color: #ffffff;
+}
+
+.hero-bg h1,
+.hero-bg p {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}

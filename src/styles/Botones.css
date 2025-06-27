@@ -1,0 +1,35 @@
+.btn-beige {
+  background-color: #f5f5dc;
+  color: #3e2630;
+  border: 1px solid #d6d6b8;
+  transition: all 0.3s ease;
+}
+
+.btn-beige:hover {
+  background-color: #e5e5c4;
+  color: #3e2630;
+}
+
+.btn.btn-dark-elegant {
+  background-color: #3e2630;
+  color: #ffffff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn.btn-dark-elegant:hover {
+  background-color: #5c3947;
+  color: #ffffff;
+}
+
+.btn.btn-outline-dark-elegant {
+  background-color: transparent;
+  color: #3e2630;
+  border: 2px solid #3e2630;
+  transition: all 0.3s ease;
+}
+
+.btn.btn-outline-dark-elegant:hover {
+  background-color: #3e2630;
+  color: #ffffff;
+}
