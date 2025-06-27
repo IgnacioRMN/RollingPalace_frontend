@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/Logo.png";
 import "../styles/Navbar-Footer.css";
 import "../styles/Botones.css";
 
