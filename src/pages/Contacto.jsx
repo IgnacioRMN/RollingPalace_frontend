@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Mail,
   Phone,
@@ -8,7 +8,7 @@ import {
   Twitter,
   Linkedin,
 } from "lucide-react";
-import "../styles/Contacto.css";
+import "../styles/Botones.css";
 
 const Contacto = () => {
   const [form, setForm] = useState({ email: "", message: "" });
@@ -59,7 +59,7 @@ const Contacto = () => {
                 placeholder="Escribe tu mensaje..."
               />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-dark-elegant">
               Enviar
             </button>
           </form>

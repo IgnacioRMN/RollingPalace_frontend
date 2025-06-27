@@ -1,5 +1,5 @@
-
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -11,26 +11,22 @@ html, body {
   color: #212529;
 }
 
-/* El contenedor raíz para estructurar como flex */
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Main crece para ocupar el espacio entre navbar y footer */
 main {
   flex: 1 0 auto;
 }
 
-/* Footer se mantiene al fondo */
 footer {
   flex-shrink: 0;
   width: 100%;
   text-align: center;
 }
 
-/* Enlaces */
 a {
   font-weight: 500;
   color: #0d6efd;
@@ -41,7 +37,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Botones personalizados (por si los usás fuera de Bootstrap) */
 button {
   border-radius: 8px;
   border: none;
@@ -61,7 +56,6 @@ button:focus {
   outline: 3px solid #0056b3;
 }
 
-/* Títulos */
 h1 {
   font-size: 2.5rem;
 }

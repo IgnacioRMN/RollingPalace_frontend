@@ -10,8 +10,11 @@ import {
 import FormularioHabitacion from "../components/FormularioHabitacion";
 import Swal from "sweetalert2";
 import "../styles/PanelAdmin.css";
+import "../styles/Botones.css";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { FaRegCheckCircle } from "react-icons/fa";
+import { MdOutlineCancel } from "react-icons/md";
 
 const PanelAdmin = () => {
   const [habitaciones, setHabitaciones] = useState([]);
@@ -94,7 +97,6 @@ const PanelAdmin = () => {
     setShowModal(true);
   };
 
-  // Nueva función para actualizar estado de reserva y habitación
   const handleActualizarEstado = async (id, nuevoEstado, habitacionId) => {
     const token = localStorage.getItem("token");
     try {
@@ -131,7 +133,7 @@ const PanelAdmin = () => {
     }
   };
 
-  // Nueva función para eliminar reserva cancelada
+  //función para eliminar reserva cancelada
   const handleEliminarReserva = async (id) => {
     const token = localStorage.getItem("token");
     const result = await Swal.fire({
@@ -272,7 +274,7 @@ const PanelAdmin = () => {
           </div>
         ) : (
           <table className="table table-hover table-bordered mb-0">
-            <thead className="table-info text-uppercase">
+            <thead className="table-warning text-uppercase">
               <tr>
                 <th>Usuario</th>
                 <th>Habitación</th>
@@ -302,7 +304,7 @@ const PanelAdmin = () => {
                       <>
                         {reserva.estado === "Pendiente" && (
                           <button
-                            className="btn btn-success btn-sm me-2"
+                            className="btn btn-dark-elegant btn-sm me-2"
                             onClick={() =>
                               handleActualizarEstado(
                                 reserva._id,
@@ -311,11 +313,11 @@ const PanelAdmin = () => {
                               )
                             }
                           >
-                            Confirmar
+                            <FaRegCheckCircle className="fs-5" />
                           </button>
                         )}
                         <button
-                          className="btn btn-danger btn-sm"
+                          className="btn btn-dark-elegant btn-sm"
                           onClick={() =>
                             handleActualizarEstado(
                               reserva._id,
@@ -324,13 +326,13 @@ const PanelAdmin = () => {
                             )
                           }
                         >
-                          Cancelar
+                          <MdOutlineCancel className="fs-5" />
                         </button>
                       </>
                     )}
                     {reserva.estado === "Cancelada" && (
                       <button
-                        className="btn btn-outline-danger btn-sm"
+                        className="btn btn-dark-elegant btn-sm"
                         onClick={() => handleEliminarReserva(reserva._id)}
                       >
                         Eliminar

@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Botones.css";
 import "../styles/Home.css";
-import CarruselComponent from "../components/CarruselComponent.jsx";
+import Hero from "../components/Hero.jsx";
 import { LiaHotelSolid } from "react-icons/lia";
 import { MdOutlineSpa } from "react-icons/md";
 import { IoCarOutline } from "react-icons/io5";
@@ -10,19 +10,10 @@ const Home = () => {
   return (
     <div>
       {/* Bienvenida */}
-      <section className="bg-white text-center py-2">
-        <div className="container">
-          <h1 className="display-4 text-dark">Rolling Palace Hotel</h1>
-          <p className="lead">
-            Bienvenidos! Explorá, disfrutá y viví experiencias únicas con
-            nosotros.
-          </p>
+      <section className="hero-bg text-center py-2">
+        <div className="">
+          <Hero />
         </div>
-      </section>
-
-      {/* Carrusel */}
-      <section className="bg-white ">
-        <CarruselComponent />
       </section>
 
       {/* Servicios */}
@@ -68,7 +59,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Parallax (requiere algo de estilo inline sí o sí) */}
+      {/* Parallax  */}
       <section
         className="d-flex align-items-center justify-content-center text-white text-center"
         style={{
@@ -90,11 +81,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="bg-white text-center py-5">
         <div className="container">
           <h2 className="mb-4">¿Listo para reservar?</h2>
-          <a href="/reservar" className="btn btn-dark-elegant btn-lg px-5">
+          <a href="/catalogo" className="btn btn-dark-elegant btn-lg px-5">
             Reservá ahora
           </a>
         </div>

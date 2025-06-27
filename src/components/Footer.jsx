@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/Navbar-Footer.css";
 
 const Footer = () => {
@@ -8,15 +9,15 @@ const Footer = () => {
         <p>Calle Hotel 123, Tucumán, Argentina</p>
         <p>Email: contacto@rollingpalace.com | Tel: +54 381 123 4567</p>
         <div className="my-3">
-          <a href="#" className="text-black text-decoration-none me-3">
-            Política de Privacidad
-          </a>
-          <a href="#" className="text-black text-decoration-none me-3">
-            Términos de Servicio
-          </a>
-          <a href="#" className="text-black text-decoration-none">
-            Contáctanos
-          </a>
+          <Link
+            to="/sobre-nosotros"
+            className="text-black text-decoration-none me-3"
+          >
+            Sobre Nosotros
+          </Link>
+          <Link to="/contacto" className="text-black text-decoration-none ">
+            Contacto
+          </Link>
         </div>
         <p className="text-black-50 small mb-0">
           © 2025 Rolling Palace. Todos los derechos reservados.

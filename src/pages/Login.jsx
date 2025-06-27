@@ -18,7 +18,7 @@ const Login = ({ setUsuarioLogueado }) => {
       const user = await iniciarSesion(usuario);
       if (user && user.token) {
         localStorage.setItem("token", user.token);
-        localStorage.setItem("isAdmin", user.isAdmin); // Guardar rol en localStorage
+        localStorage.setItem("isAdmin", user.isAdmin);
         setUsuarioLogueado(usuario.email);
         Swal.fire({
           icon: "success",
@@ -29,7 +29,7 @@ const Login = ({ setUsuarioLogueado }) => {
         if (user.isAdmin) {
           navegacion("/panel-admin");
         } else {
-          navegacion("/catalogo"); // O la ruta que corresponda para usuarios normales
+          navegacion("/catalogo");
         }
       } else {
         Swal.fire({

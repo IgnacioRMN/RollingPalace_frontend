@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import "../styles/ReservaModal.css"; // Asegúrate de tener este archivo CSS
+import { useState } from "react";
+import Swal from "sweetalert2";
+import "../styles/ReservaModal.css";
 
 const ReservaModal = ({ isOpen, onClose, habitacion, onReservar }) => {
   const [fechaInicio, setFechaInicio] = useState("");
@@ -8,7 +9,7 @@ const ReservaModal = ({ isOpen, onClose, habitacion, onReservar }) => {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!fechaInicio || !fechaFin) {
       setError("Por favor, completa ambas fechas.");
@@ -19,7 +20,22 @@ const ReservaModal = ({ isOpen, onClose, habitacion, onReservar }) => {
       return;
     }
     setError("");
-    onReservar({ fechaInicio, fechaFin });
+    try {
+      await onReservar({ fechaInicio, fechaFin });
+      Swal.fire({
+        icon: "success",
+        title: "Reserva realizada",
+        text: "¡Tu reserva fue registrada con éxito!",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: err?.message || "No se pudo realizar la reserva",
+      });
+    }
   };
 
   return (

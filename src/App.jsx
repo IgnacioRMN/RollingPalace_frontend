@@ -8,6 +8,7 @@ import Registro from "./pages/Registro";
 import PanelAdmin from "./pages/PanelAdmin";
 import ProteccionRutas from "./routes/ProteccionRutas";
 import SobreNosotros from "./pages/SobreNosotros";
+import Error404 from "./pages/Error404";
 import Contacto from "./pages/Contacto";
 import Footer from "./components/Footer";
 import MisReservas from "./pages/MisReservas";
@@ -59,14 +60,7 @@ function App() {
                 </ProteccionRutas>
               }
             />
-            <Route
-              path="*"
-              element={
-                <div className="text-center py-5">
-                  404 - Página no encontrada
-                </div>
-              }
-            />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </main>
         <Footer />
