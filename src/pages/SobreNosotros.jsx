@@ -1,6 +1,11 @@
 import { Col, Row } from "react-bootstrap";
 import logoRolling from "../assets/favicon-RP.ico";
 import "../styles/SobreNosotros.css";
+import Jose from "../assets/jose.png";
+import TomasPando from "../assets/tomasPando.jpg";
+import JuanMonserrat from "../assets/juanMonserrat.jpeg";
+import EricMercado from "../assets/ericMercado.jpeg";
+import JuanStegmayer from "../assets/juanStegmayer.jpeg";
 
 const SobreNosotros = () => {
   return (
@@ -35,38 +40,35 @@ const SobreNosotros = () => {
       <Row className="team-members">
         <Col md={6} sm={12} lg={3} className="team-member">
           <div className="member-image border-primary">
-            <img src="./src/assets/jose.png" alt="José Ignacio Ramón" />
+            <img src={Jose} alt="José Ignacio Ramón" />
           </div>
           <h5 className="text-primary">José Ignacio Ramón (LT)</h5>
         </Col>
 
         <Col md={6} sm={12} lg={3} className="team-member">
           <div className="member-image border-primary">
-            <img src="./src/assets/tomasPando.jpg" alt="Tomas Pando" />
+            <img src={TomasPando} alt="Tomas Pando" />
           </div>
           <h5 className="text-primary">Tomas Pando (SM)</h5>
         </Col>
 
         <Col md={6} sm={12} lg={3} className="team-member">
           <div className="member-image border-primary">
-            <img
-              src="./src/assets/juanMonserrat.jpeg"
-              alt="Juan Andres Monserrat"
-            />
+            <img src={JuanMonserrat} alt="Juan Andres Monserrat" />
           </div>
           <h5 className="text-primary">Juan Andres Monserrat</h5>
         </Col>
 
         <Col md={6} sm={12} lg={3} className="team-member">
           <div className="member-image border-primary">
-            <img src="./src/assets/ericMercado.jpeg" alt="Eric Mercado" />
+            <img src={EricMercado} alt="Eric Mercado" />
           </div>
           <h5 className="text-primary">Eric Mercado</h5>
         </Col>
 
         <Col md={6} sm={12} lg={3} className="team-member">
           <div className="member-image border-primary">
-            <img src="./src/assets/juanStegmayer.jpeg" alt="Juan Stegmayer" />
+            <img src={JuanStegmayer} alt="Juan Stegmayer" />
           </div>
           <h5 className="text-primary">Juan Stegmayer</h5>
         </Col>
