@@ -9,7 +9,6 @@ import {
 } from "../helpers/api";
 import FormularioHabitacion from "../components/FormularioHabitacion";
 import Swal from "sweetalert2";
-import "../styles/PanelAdmin.css";
 import "../styles/Botones.css";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";

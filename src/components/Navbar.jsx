@@ -19,7 +19,8 @@ const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
 
     if (result.isConfirmed) {
       localStorage.removeItem("token");
-      setUsuarioLogueado(null);
+      localStorage.removeItem("isAdmin");
+      setUsuarioLogueado(false);
       Swal.fire({
         icon: "success",
         title: "Sesión cerrada",

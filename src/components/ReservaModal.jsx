@@ -29,7 +29,9 @@ const ReservaModal = ({ isOpen, onClose, habitacion, onReservar }) => {
         timer: 1800,
         showConfirmButton: false,
       });
+      onClose();
     } catch (err) {
+      setError(err?.message || "No se pudo realizar la reserva");
       Swal.fire({
         icon: "error",
         title: "Error",
@@ -41,7 +43,11 @@ const ReservaModal = ({ isOpen, onClose, habitacion, onReservar }) => {
   return (
     <div className="reserva-modal-overlay">
       <div className="reserva-modal">
-        <button className="cerrar-modal" onClick={onClose}>
+        <button
+          className="cerrar-modal"
+          onClick={onClose}
+          aria-label="Cerrar modal de reserva"
+        >
           X
         </button>
         <h2>Reservar habitación {habitacion?.nombre || ""}</h2>
@@ -64,7 +70,11 @@ const ReservaModal = ({ isOpen, onClose, habitacion, onReservar }) => {
               required
             />
           </label>
-          {error && <div className="error">{error}</div>}
+          {error && (
+            <div className="error" role="alert">
+              {error}
+            </div>
+          )}
           <button type="submit">Confirmar reserva</button>
         </form>
       </div>

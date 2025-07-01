@@ -21,9 +21,15 @@ const Contacto = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!form.email || !form.message) {
+      alert("Por favor, completa todos los campos.");
+      return;
+    }
+
     console.log("Formulario enviado", form);
 
     setForm({ email: "", message: "" });
+    alert("¡Mensaje enviado! Nos pondremos en contacto pronto.");
   };
 
   return (

@@ -1,7 +1,15 @@
 import logo from "../assets/LogoRP.png";
 import "../styles/hero.css";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/catalogo");
+  };
+
   return (
     <div className="hero-bg position-relative py-12">
       <div className="container position-relative">
@@ -18,7 +26,7 @@ const Hero = () => {
             <div className="mt-4">
               <div className="rounded-md-pill shadow rounded-3 mb-4 bg-white">
                 <div className="p-md-2 p-4">
-                  <form className="row g-1">
+                  <form className="row g-1" onSubmit={handleSubmit}>
                     <div className="col-12 col-md-5">
                       <div className="input-group mb-2 mb-md-0 border-md-0 border rounded-pill">
                         <span

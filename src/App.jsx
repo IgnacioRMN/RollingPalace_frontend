@@ -17,12 +17,13 @@ import "./styles/App.css";
 function App() {
   const [usuarioLogueado, setUsuarioLogueado] = useState(() => {
     const token = localStorage.getItem("token");
-    return token ? true : null;
+    return !!token;
   });
 
   useEffect(() => {
     if (!usuarioLogueado) {
       localStorage.removeItem("token");
+      localStorage.removeItem("isAdmin");
     }
   }, [usuarioLogueado]);
 

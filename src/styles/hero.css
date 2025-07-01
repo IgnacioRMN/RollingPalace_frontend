@@ -46,18 +46,6 @@
   }
 }
 
-.btn.btn-dark-elegant {
-  background-color: #3e2630;
-  color: #ffffff;
-  border: none;
-  transition: all 0.3s ease;
-}
-
-.btn.btn-dark-elegant:hover {
-  background-color: #5c3947;
-  color: #ffffff;
-}
-
 .hero-bg h1,
 .hero-bg p {
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
