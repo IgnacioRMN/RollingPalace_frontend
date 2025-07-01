@@ -1,8 +1,15 @@
-# 🏨 Rolling Palace – Proyecto Final
+# 🏨 Rolling Palace Frontend – Proyecto Final
 
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/) [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/) [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+
 
 Bienvenido al repositorio **frontend** de **Rolling Palace**, una plataforma web para reservas de hotel de lujo desarrollada por el **Grupo II** de la **comisión Web7** en el programa **Full Stack Web Developer** de **RollingCode School**.
+
+## 🔗 Enlaces Útiles
+
+- 📦 [Repositorio Backend/API](https://github.com/IgnacioRMN/RollingPalace_backend)
 
 ---
 
@@ -76,12 +83,6 @@ RollingPalace_frontend/
 - 🔐 Sistema de login para clientes y administradores.
 - 📋 Gestión de reservas y panel administrativo.
 - 📱 Diseño responsive para dispositivos móviles.
-
----
-
-## 🔗 Enlaces Útiles
-
-- 📦 [Repositorio Backend/API](https://github.com/IgnacioRMN/RollingPalace_backend)
 
 ---
 
