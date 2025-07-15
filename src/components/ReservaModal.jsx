@@ -5,23 +5,48 @@ import "../styles/ReservaModal.css";
 const ReservaModal = ({ isOpen, onClose, habitacion, onReservar }) => {
   const [fechaInicio, setFechaInicio] = useState("");
   const [fechaFin, setFechaFin] = useState("");
-  const [error, setError] = useState("");
+  const [mensajeError, setMensajeError] = useState("");
 
-  if (!isOpen) return null;
+  const hoy = new Date();
+  const fechaMinima = hoy.toISOString().split("T")[0];
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  if (!isOpen) {
+    return null;
+  }
+
+  const validarFechas = () => {
+    const entrada = new Date(fechaInicio);
+    const salida = new Date(fechaFin);
+
+    hoy.setHours(0, 0, 0, 0);
+
     if (!fechaInicio || !fechaFin) {
-      setError("Por favor, completa ambas fechas.");
-      return;
+      setMensajeError("Debes completar ambas fechas.");
+      return false;
     }
-    if (fechaFin < fechaInicio) {
-      setError("La fecha de salida debe ser posterior a la de entrada.");
-      return;
+
+    if (entrada < hoy) {
+      setMensajeError("La fecha de entrada no puede ser anterior a hoy.");
+      return false;
     }
-    setError("");
+
+    if (salida <= entrada) {
+      setMensajeError("La salida debe ser después de la entrada.");
+      return false;
+    }
+
+    setMensajeError("");
+    return true;
+  };
+
+  const manejarReserva = async (e) => {
+    e.preventDefault();
+
+    if (!validarFechas()) return;
+
     try {
       await onReservar({ fechaInicio, fechaFin });
+
       Swal.fire({
         icon: "success",
         title: "Reserva realizada",
@@ -29,13 +54,16 @@ const ReservaModal = ({ isOpen, onClose, habitacion, onReservar }) => {
         timer: 1800,
         showConfirmButton: false,
       });
+
       onClose();
-    } catch (err) {
-      setError(err?.message || "No se pudo realizar la reserva");
+    } catch (error) {
+      const mensaje = error?.message || "No se pudo completar la reserva.";
+      setMensajeError(mensaje);
+
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: err?.message || "No se pudo realizar la reserva",
+        text: mensaje,
       });
     }
   };
@@ -43,38 +71,37 @@ const ReservaModal = ({ isOpen, onClose, habitacion, onReservar }) => {
   return (
     <div className="reserva-modal-overlay">
       <div className="reserva-modal">
-        <button
-          className="cerrar-modal"
-          onClick={onClose}
-          aria-label="Cerrar modal de reserva"
-        >
+        <button className="cerrar-modal" onClick={onClose}>
           X
         </button>
+
         <h2>Reservar habitación {habitacion?.nombre || ""}</h2>
-        <form onSubmit={handleSubmit}>
+
+        <form onSubmit={manejarReserva}>
           <label>
             Fecha de entrada:
             <input
               type="date"
               value={fechaInicio}
+              min={fechaMinima}
               onChange={(e) => setFechaInicio(e.target.value)}
               required
             />
           </label>
+
           <label>
             Fecha de salida:
             <input
               type="date"
               value={fechaFin}
+              min={fechaInicio || fechaMinima}
               onChange={(e) => setFechaFin(e.target.value)}
               required
             />
           </label>
-          {error && (
-            <div className="error" role="alert">
-              {error}
-            </div>
-          )}
+
+          {mensajeError && <div className="error">{mensajeError}</div>}
+
           <button type="submit">Confirmar reserva</button>
         </form>
       </div>
